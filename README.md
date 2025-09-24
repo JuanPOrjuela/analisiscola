@@ -9,7 +9,7 @@
 - $\rho=\dfrac{\lambda}{\mu}$ : factor de tráfico (tráfico nominal).  
 - $P_n$ : probabilidad estacionaria de $n$ clientes en el sistema.  
 - $P_K$ : probabilidad de bloqueo (sistema en estado $K$).  
-- $\lambda_{\text}$ : tasa efectiva de entrada (llegadas que sí entran).  
+- $\lambda_{\text{eff}}$ : tasa efectiva de entrada (llegadas que sí entran).  
 - $L$ (NS) : número medio en el sistema.  
 - $L_q$ (Nw) : número medio en la cola (excluye el que está en servicio).  
 - $W$ (TS) : tiempo medio en el sistema.  
@@ -55,7 +55,7 @@ $$
 La tasa efectiva de llegada (las que sí entran al sistema) es:
 
 $$
-\lambda_{\text{}} = \lambda (1-P_K).
+\lambda_{\text{eff}} = \lambda (1-P_K).
 $$
 
 ---
@@ -96,8 +96,8 @@ $$
 
 Utilización efectiva del servidor:
 $$
-\rho_{\text{}}
-= \frac{\lambda_{\text{}}}{\mu}
+\rho_{\text{eff}}
+= \frac{\lambda_{\text{eff}}}{\mu}
 = \frac{\lambda \left(1 - P_K\right)}{\mu}
 $$
 
@@ -139,7 +139,7 @@ $$
 
 ## 4) recursos y ejemplo numérico rápido
 - ejemplo: $\lambda=0.60,\ s=1.55,\ \mu\approx0.64516,\ K=\infty$ → resultados teóricos de arriba.  
-- para $K=10$ (muestra): calculamos $P_0=\dfrac{1-\rho}{1-\rho^{11}}$ y luego $L$ con la fórmula cerrada para $K=10$; usa eso para obtener $W$ y $W_q$ con $\lambda_{\text}=\lambda(1-P_{10})$.
+- para $K=10$ (muestra): calculamos $P_0=\dfrac{1-\rho}{1-\rho^{11}}$ y luego $L$ con la fórmula cerrada para $K=10$; usa eso para obtener $W$ y $W_q$ con $\lambda_{\text{eff}}=\lambda(1-P_{10})$.
 
 # 3) Comprobación experimental (MESA)
 
@@ -188,7 +188,7 @@ $$
 La tasa efectiva de llegada (las que sí entran al sistema) es:
 
 $$
-\lambda_{\text{}} = \lambda (1 - P_K).
+\lambda_{\text{eff}} = \lambda (1 - P_K).
 $$
 
 ---
