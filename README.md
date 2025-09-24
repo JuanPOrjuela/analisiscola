@@ -9,7 +9,7 @@
 - $\rho=\dfrac{\lambda}{\mu}$ : factor de tráfico (tráfico nominal).  
 - $P_n$ : probabilidad estacionaria de $n$ clientes en el sistema.  
 - $P_K$ : probabilidad de bloqueo (sistema en estado $K$).  
-- $\lambda_{\text{eff}}$ : tasa efectiva de entrada (llegadas que sí entran).  
+- $\lambda_{\text}$ : tasa efectiva de entrada (llegadas que sí entran).  
 - $L$ (NS) : número medio en el sistema.  
 - $L_q$ (Nw) : número medio en la cola (excluye el que está en servicio).  
 - $W$ (TS) : tiempo medio en el sistema.  
@@ -55,7 +55,7 @@ $$
 La tasa efectiva de llegada (las que sí entran al sistema) es:
 
 $$
-\lambda_{\text{eff}} = \lambda (1-P_K).
+\lambda_{\text{}} = \lambda (1-P_K).
 $$
 
 ---
@@ -96,8 +96,8 @@ $$
 
 Utilización efectiva del servidor:
 $$
-\rho_{\text{eff}}
-= \frac{\lambda_{\text{eff}}}{\mu}
+\rho_{\text{}}
+= \frac{\lambda_{\text{}}}{\mu}
 = \frac{\lambda \left(1 - P_K\right)}{\mu}
 $$
 
@@ -188,7 +188,7 @@ $$
 La tasa efectiva de llegada (las que sí entran al sistema) es:
 
 $$
-\lambda_{\text{eff}} = \lambda (1 - P_K).
+\lambda_{\text{}} = \lambda (1 - P_K).
 $$
 
 ---
