@@ -5,7 +5,7 @@
 - $s$ : tiempo medio de servicio (ticks).  
 - $\mu = 1/s$ : tasa de servicio.  
 - $K$ : capacidad total del sistema (clientes en servicio + en cola).  
-- fuente: infinita (por eso el `/\infty` en la notación).  
+- fuente: infinita (por eso el `∞` en la notación).  
 - $\rho=\dfrac{\lambda}{\mu}$ : factor de tráfico (tráfico nominal).  
 - $P_n$ : probabilidad estacionaria de $n$ clientes en el sistema.  
 - $P_K$ : probabilidad de bloqueo (sistema en estado $K$).  
@@ -89,14 +89,16 @@ $$
 ya que la probabilidad de que el servidor esté ocupado es $1-P_0$.
 
 
-### tiempos medios (ley de Little con $\lambda_{\text{eff}}$)
+### tiempos medios 
 $$
-W=\frac{L}{\lambda_{\text{eff}}},\qquad W_q=\frac{L_q}{\lambda_{\text{eff}}}.
+W=\frac{L}{\lambda_{\text{}}},\qquad W_q=\frac{L_q}{\lambda_{\text{}}}.
 $$
 
 Utilización efectiva del servidor:
 $$
-\rho_{\text{eff}}=\frac{\lambda_{\text{eff}}}{\mu}=\frac{\lambda(1-P_K)}{\mu}.
+\rho_{\text{eff}}
+= \frac{\lambda_{\text{eff}}}{\mu}
+= \frac{\lambda \left(1 - P_K\right)}{\mu}
 $$
 
 ---
@@ -116,34 +118,32 @@ $$
 - $W\approx 22.143$ ticks
 - utilización $\rho\approx 93\%$
 
-> En la captura NetLogo se observan valores empíricos y los monitores `Exp.*` con esos mismos valores teóricos. La diferencia entre una corrida empírica concreta y el teórico suele deberse a ruido estocástico y warm-up.
+> En NetLogo usamos valores empíricos y los monitores `Exp.*` con esos mismos valores teóricos. Una sola simulación puede dar un valor distinto al teórico porque hay azar en los eventos, por eso repetimos varias veces y promediamos los resultados, por lo que el prommedio se acerca al valor esperado.
 
-### si usas M/M/1/K con $K$ finito
-- al elegir un $K$ pequeño (p. ej. $K=10$), aparecerá bloqueo ($P_K>0$) y las medidas cambiarán: $\lambda_{\text{eff}}<\lambda$, $L_q$ y tiempos disminuirán comparados con el caso infinito (porque se descartan llegadas cuando el sistema está lleno).
-- para comparar NetLogo con el modelo finito, asegúrate de que NetLogo esté configurado con la misma capacidad $K$ (si tu NetLogo no tiene tope, entonces compáralo con $K\to\infty$).
+### si usamos M/M/1/K con $K$ finito
+- al elegir un $K$ pequeño (p. ej. $K=10$), aparecerá bloqueo ($P_K>0$) y las medidas cambiarán: $\lambda_{\text{}}<\lambda$, $L_q$ y los tiempos disminuirán comparados con el caso infinito (porque se descartan llegadas cuando el sistema está lleno).
+- Para comparar NetLogo con el modelo finito, debemos asegurarnos que la simulacion del NetLogo tenga una configuracion con la misma capacidad de $K$.
 
-### interpretación práctica
-- Si tu experimento en NetLogo refleja un sistema con **sin límite** (cola infinita), usa las fórmulas M/M/1/∞.  
-- Si tu profe pide **M/M/1/K/∞**, en el README incluye las fórmulas anteriores (M/M/1/K) y señala en la práctica qué $K$ se usó en cada simulación.  
-- Para validar con simulación, haz varias réplicas, aplica warm-up (descartar transitorio) y promedia; así la discrepancia teórica/simulación cae mucho.
+### interpretación práctica 
+- Para validar con simulación, debemos hacer varias réplicas para promediar los resultados, pues asi la diferencia entre los modelos es mas clara y confiable.
 
 ---
 
 ## 3) pasos prácticos para reproducir y comparar
-1. elige $(\lambda,s,K)$ (si $K$ grande → aproxima infinito).  
-2. calcula $P_0,P_n,P_K$ y luego $L,L_q,W,W_q$ con las fórmulas de la sección 1.  
-3. corre simulación (NetLogo / MESA) con los mismos parámetros, usa warm-up y varias réplicas.  
-4. compara medias y reporta error relativo y, si es posible, intervalos de confianza.  
+1. Eligimos $(\lambda,s,K)$ (si $K$ grande → aproxima infinito).  
+2. Calculamos $P_0,P_n,P_K$ y luego $L,L_q,W,W_q$ con las fórmulas de la sección 1.  
+3. Corremos simulación (NetLogo / MESA) con los mismos parámetros.  
+4. Comparamos las medias y vemos si son cercanas o si tienen una diferencia muy grande.  
 
 ---
 
 ## 4) recursos y ejemplo numérico rápido
-- ejemplo: $\lambda=0.60,\ s=1.55,\ \mu\approx0.64516,\ K=\infty$ → resultados teóricos listos arriba.  
-- para $K=10$ (muestra): calcula $P_0=\dfrac{1-\rho}{1-\rho^{11}}$ y luego $L$ con la fórmula cerrada para $K=10$; usa eso para obtener $W$ y $W_q$ con $\lambda_{\text{eff}}=\lambda(1-P_{10})$.
+- ejemplo: $\lambda=0.60,\ s=1.55,\ \mu\approx0.64516,\ K=\infty$ → resultados teóricos de arriba.  
+- para $K=10$ (muestra): calculamos $P_0=\dfrac{1-\rho}{1-\rho^{11}}$ y luego $L$ con la fórmula cerrada para $K=10$; usa eso para obtener $W$ y $W_q$ con $\lambda_{\text}=\lambda(1-P_{10})$.
 
 # 3) Comprobación experimental (MESA)
 
-Para validar el modelo matemático de la cola **M/M/1/K/∞**, se implementó una simulación computacional en Python usando la librería [Mesa](https://mesa.readthedocs.io/).
+Para validar el modelo matemático de la cola **M/M/1/K/∞**, se implementó una simulación computacional en Python usando la libreria de MESA, el archivo esta adjunto a este repositorio con el nombre `colam.py` solo es necesario tener python y la libreria MESA en el dispositivo, y correrlo dependiendo de la configuracion, puede ser como `python colam.py` o como `py colam.py` lo hacemos varias veces, vemos, y comparamos los resultados.
 
 En cada corrida, se registraron:
 - **rechazados**: clientes que llegaron cuando el sistema estaba lleno.  
