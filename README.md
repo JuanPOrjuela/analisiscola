@@ -19,7 +19,7 @@
 
 ## 1) modelo matemático (M/M/1/K/∞)
 
-### probabilidades estacionarias (relación geométrica)
+### probabilidades 
 
 Para $n = 0, \dots, K$:
 
@@ -68,7 +68,7 @@ $$
 L = \sum_{n=0}^K n P_n.
 $$
 
-Fórmula cerrada para $\rho \neq 1$ (usando la suma conocida $\sum_{n=1}^K n r^n$):
+Fórmula para $\rho \neq 1$ (usando la suma conocida $\sum_{n=1}^K n r^n$):
 
 $$
 L = P_0 \cdot \frac{\rho \, \big(1 - (K+1)\rho^K + K\rho^{K+1}\big)}{(1-\rho)^2}.
@@ -89,29 +89,31 @@ $$
 ya que la probabilidad de que el servidor esté ocupado es $1-P_0$.
 
 
-### tiempos medios 
+### Tiempos medios 
 $$
 W=\frac{L}{\lambda_{\text{}}},\qquad W_q=\frac{L_q}{\lambda_{\text{}}}.
 $$
 
-Utilización efectiva del servidor:
+**Utilización efectiva del servidor**
+
 $$
 \rho_{\text{eff}}
 = \frac{\lambda_{\text{eff}}}{\mu}
 = \frac{\lambda \left(1 - P_K\right)}{\mu}
 $$
 
+
 ---
 
 ## 2) Comparación práctica con NetLogo (ejemplo y notas)
 
-### parámetros usados en la captura de NetLogo (ejemplo)
-- `mean-arrival-rate = \lambda = 0.60` (por tick)  
+### Parámetros usados en la captura de NetLogo (ejemplo)
+- `mean-arrival-rate = lambda = 0.60` (por tick)  
 - `mean-service-time = s = 1.55` (ticks) → $\mu=1/1.55\approx 0.64516129$  
 - número de servidores = 1 → M/M/1.  
 - en la captura NetLogo se muestra la versión **∞** (sin tope $K$ visible), por eso compararemos primero con $K=\infty$.
 
-### teórico (caso infinito $K\to\infty$, válido si no hay bloqueo)
+### Teórico (caso infinito $K\to\infty$, válido si no hay bloqueo)
 - $\rho=\dfrac{\lambda}{\mu}\approx 0.93$
 - $L_q=\dfrac{\rho^2}{1-\rho}\approx 12.356$
 - $W_q=\dfrac{L_q}{\lambda}\approx 20.593$ ticks
@@ -120,11 +122,11 @@ $$
 
 > En NetLogo usamos valores empíricos y los monitores `Exp.*` con esos mismos valores teóricos. Una sola simulación puede dar un valor distinto al teórico porque hay azar en los eventos, por eso repetimos varias veces y promediamos los resultados, por lo que el prommedio se acerca al valor esperado.
 
-### si usamos M/M/1/K con $K$ finito
+### Si usamos M/M/1/K con $K$ finito
 - al elegir un $K$ pequeño (p. ej. $K=10$), aparecerá bloqueo ($P_K>0$) y las medidas cambiarán: $\lambda_{\text{}}<\lambda$, $L_q$ y los tiempos disminuirán comparados con el caso infinito (porque se descartan llegadas cuando el sistema está lleno).
 - Para comparar NetLogo con el modelo finito, debemos asegurarnos que la simulacion del NetLogo tenga una configuracion con la misma capacidad de $K$.
 
-### interpretación práctica 
+### Interpretación práctica 
 - Para validar con simulación, debemos hacer varias réplicas para promediar los resultados, pues asi la diferencia entre los modelos es mas clara y confiable.
 
 ---
